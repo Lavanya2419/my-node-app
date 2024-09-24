@@ -24,11 +24,11 @@ pipeline {
                 script {
                     echo 'Pushing Docker Image...'
                     // Tag the Docker image with your DockerHub username
-                    sh 'docker tag my-node-app girish895/my-node-app:latest'
+                    sh 'docker tag my-node-app lavanya2419/my-node-app:latest'
             
                     // Push the Docker image to DockerHub using Jenkins credentials
                     docker.withRegistry('https://index.docker.io/v1/', 'dockerhub-credentials') {
-                        docker.image('girish895/my-node-app').push('latest')
+                        docker.image('lavanya2419/my-node-app').push('latest')
                     }
                 }
             }
@@ -39,7 +39,7 @@ pipeline {
                 script {
                     echo 'Deploying to Kubernetes...'
                     // Set KUBECONFIG environment variable to specify the path to the kubeconfig file
-                    withEnv(['KUBECONFIG=/home/girish/.kube/config']) {
+                    withEnv(['KUBECONFIG=/home/lavanyan/.kube/config']) {
                         // Deploy the application to Kubernetes using the YAML file
                         sh 'kubectl apply -f deployment.yml'
                     }
